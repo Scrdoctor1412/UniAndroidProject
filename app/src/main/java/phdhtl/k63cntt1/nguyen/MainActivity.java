@@ -1,5 +1,6 @@
 package phdhtl.k63cntt1.nguyen;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -50,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
 
                     Log.d("Home", "clicked");
                 }else if(item.getItemId() == R.id.item_story){
-
+                    Intent myIntent = new Intent(getApplicationContext(), StoryActivity.class);
+                    startActivity(myIntent);
                 }else if(item.getItemId() == R.id.item_user){
 
                 }else if(item.getItemId() == R.id.item_logout){
