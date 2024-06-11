@@ -55,6 +55,12 @@ public class MainActivity extends AppCompatActivity {
 
                 }else if(item.getItemId() == R.id.item_logout){
 
+                }else if(item.getItemId() == R.id.item_author){
+
+                }else if(item.getItemId() == R.id.item_user_manager){
+
+                }else if(item.getItemId() == R.id.item_publisher){
+
                 }
                 return false;
             }
