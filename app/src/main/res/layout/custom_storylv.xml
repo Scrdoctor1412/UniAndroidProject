@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="41dp"
-        android:text="Ma truyen:"
+        android:text="Mã truyện:"
         app:layout_constraintStart_toEndOf="@+id/imganhtruyen"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="23dp"
-        android:text="Ten truyen:"
+        android:text="Tên truyện: "
         app:layout_constraintStart_toEndOf="@+id/imganhtruyen"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="21dp"
-        android:text="The loai:"
+        android:text="Thể loại "
         app:layout_constraintStart_toEndOf="@+id/imganhtruyen"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
         android:layout_marginTop="23dp"
-        android:text="Tac gia:"
+        android:text="Tác giả: "
         app:layout_constraintStart_toEndOf="@+id/imganhtruyen"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -69,7 +69,7 @@
         android:id="@+id/txttentruyen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="20dp"
         android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/textView4"

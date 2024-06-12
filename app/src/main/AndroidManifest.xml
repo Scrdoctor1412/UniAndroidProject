@@ -14,10 +14,12 @@
         tools:targetApi="31">
         <activity
             android:name=".StoryDetailsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".StoryActivity"/>
         <activity
             android:name=".StoryActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".LoginActivity"
             android:exported="true">

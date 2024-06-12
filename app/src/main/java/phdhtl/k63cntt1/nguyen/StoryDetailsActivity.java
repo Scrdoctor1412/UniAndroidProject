@@ -8,14 +8,19 @@ import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.Objects;
+
 public class StoryDetailsActivity extends AppCompatActivity {
 
     ImageView imganhtruyen;
-    EditText edtmatruyen, edttentruyen, edtnoidung, edttacgia, edtnxb, edttheloai, edtsochuong;
+    EditText edtmatruyen, edttentruyen, edtnoidung, edttacgia, edtnxb, edttheloai, edtsochuong, edtluotlike,edtluotxem;
+
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +28,10 @@ public class StoryDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_story_details);
 
         initView();
+
+        setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         Intent myIntent = getIntent();
         edtmatruyen.setText(myIntent.getStringExtra("matruyen"));
@@ -36,6 +45,9 @@ public class StoryDetailsActivity extends AppCompatActivity {
         int img = myIntent.getIntExtra("anhbia",R.drawable.ic_launcher_background);
         imganhtruyen.setImageResource(img);
 
+        edtluotlike.setText(myIntent.getIntExtra("luotlike", 0)+"");
+        edtluotxem.setText(myIntent.getIntExtra("luotxem",0)+"");
+
     }
 
     public void initView(){
@@ -46,6 +58,10 @@ public class StoryDetailsActivity extends AppCompatActivity {
         edtnxb = findViewById(R.id.edtnxb);
         edttheloai = findViewById(R.id.edttheloai);
         edtsochuong = findViewById(R.id.edtsochuong);
+        edtluotlike = findViewById(R.id.edtluotlike);
+        edtluotxem = findViewById(R.id.edtluotxem);
+        toolbar = findViewById(R.id.toolbar3);
         imganhtruyen = findViewById(R.id.imganhtruyen2);
+
     }
 }

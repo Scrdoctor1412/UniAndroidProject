@@ -10,7 +10,10 @@ public class Truyen {
     private String theloai;
     private int sochuong;
 
-    public Truyen(String matruyen, String tentruyen, int anhbia, String noidung, String tacgia, String nxb, String theloai, int sochuong) {
+    private int luotxem;
+    private int luotlike;
+
+    public Truyen(String matruyen, String tentruyen, int anhbia, String noidung, String tacgia, String nxb, String theloai, int sochuong, int luotlike,int luotxem) {
         this.matruyen = matruyen;
         this.tentruyen = tentruyen;
         this.anhbia = anhbia;
@@ -19,6 +22,24 @@ public class Truyen {
         this.nxb = nxb;
         this.theloai = theloai;
         this.sochuong = sochuong;
+        this.luotlike = luotlike;
+        this.luotxem = luotxem;
+    }
+
+    public int getLuotxem() {
+        return luotxem;
+    }
+
+    public void setLuotxem(int luotxem) {
+        this.luotxem = luotxem;
+    }
+
+    public int getLuotlike() {
+        return luotlike;
+    }
+
+    public void setLuotlike(int luotlike) {
+        this.luotlike = luotlike;
     }
 
     public String getMatruyen() {
