@@ -33,11 +33,13 @@ public class StoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_story);
 
         initView();
-        listTruyen.add(new Truyen("T01", "testing", R.drawable.author, "tg01", "test", "test", "kinh di", 32, 10000, 100000));
+//        listTruyen.add(new Truyen("T01", "testing", R.drawable.author, "tg01", "test", "test", "kinh di", 32, 10000, 100000));
 
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        //Set click event for sending data to Story Details activity
         storylv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

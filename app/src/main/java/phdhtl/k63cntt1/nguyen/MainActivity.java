@@ -65,7 +65,8 @@ public class MainActivity extends AppCompatActivity {
                 }else if(item.getItemId() == R.id.item_user_manager){
 
                 }else if(item.getItemId() == R.id.item_publisher){
-
+                    Intent myIntent = new Intent(getApplicationContext(), NxbActivity.class);
+                    startActivity(myIntent);
                 }
                 return false;
             }
