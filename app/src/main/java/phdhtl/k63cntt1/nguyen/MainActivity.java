@@ -1,5 +1,6 @@
 package phdhtl.k63cntt1.nguyen;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -52,9 +53,13 @@ public class MainActivity extends AppCompatActivity {
                 }else if(item.getItemId() == R.id.item_story){
 
                 }else if(item.getItemId() == R.id.item_user){
-
+                    Intent userActivityLauncher = new Intent(MainActivity.this, UserActivity.class);
+                    startActivity(userActivityLauncher);
                 }else if(item.getItemId() == R.id.item_logout){
 
+                } else if (item.getItemId() == R.id.item_author) {
+                    Intent userActivityLauncher = new Intent(MainActivity.this, AuthorActivity.class);
+                    startActivity(userActivityLauncher);
                 }
                 return false;
             }
