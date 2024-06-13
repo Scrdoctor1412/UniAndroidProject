@@ -18,6 +18,18 @@
         <activity
             android:name=".UserActivity"
             android:exported="false" />
+
+            android:name=".NxbActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".StoryDetailsActivity"
+            android:exported="false"
+            android:parentActivityName=".StoryActivity" />
+        <activity
+            android:name=".StoryActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".LoginActivity"
             android:exported="true">

@@ -8,6 +8,18 @@
         <item android:id="@+id/item_story"
             android:icon="@drawable/baseline_book_24"
             android:title="Story"/>
+
+        <item android:id="@+id/item_publisher"
+            android:icon="@drawable/paperplane"
+            android:title="Publisher"/>
+
+        <item android:id="@+id/item_author"
+            android:icon="@drawable/author"
+            android:title="Author"/>
+
+        <item android:id="@+id/item_user_manager"
+            android:icon="@drawable/baseline_people_24"
+            android:title="User"/>
     </group>
 
     <item android:title="Profile">
