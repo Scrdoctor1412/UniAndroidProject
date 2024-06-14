@@ -1,4 +1,4 @@
-package phdhtl.k63cntt1.nguyen;
+package phdhtl.k63cntt1.nguyen.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,11 +7,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import phdhtl.k63cntt1.nguyen.R;
 
 public class LoginActivity extends AppCompatActivity {
 

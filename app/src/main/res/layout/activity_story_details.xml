@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StoryDetailsActivity">
+    tools:context=".detailsActivity.StoryDetailsActivity">
 
     <ImageView
         android:id="@+id/imganhtruyen2"
@@ -101,7 +101,7 @@
                 android:text="Tác giả: " />
 
             <EditText
-                android:id="@+id/edttacgia"
+                android:id="@+id/edttentacgia"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -122,7 +122,7 @@
                 android:text="Nhà xuất bản: " />
 
             <EditText
-                android:id="@+id/edtnxb"
+                android:id="@+id/edttennxb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

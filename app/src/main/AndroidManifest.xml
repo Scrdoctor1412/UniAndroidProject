@@ -13,25 +13,29 @@
         android:theme="@style/Theme.FinalProject"
         tools:targetApi="31">
         <activity
-            android:name=".AuthorActivity"
+            android:name=".detailsActivity.NxbDetailsActivity"
+            android:exported="false"
+            android:parentActivityName=".Activity.NxbActivity"/>
+        <activity
+            android:name=".Activity.AuthorActivity"
             android:exported="false" />
         <activity
-            android:name=".UserActivity"
+            android:name=".Activity.UserActivity"
             android:exported="false" />
         <activity
-            android:name=".NxbActivity"
+            android:name=".Activity.NxbActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".Activity.MainActivity" />
         <activity
-            android:name=".StoryDetailsActivity"
+            android:name=".detailsActivity.StoryDetailsActivity"
             android:exported="false"
-            android:parentActivityName=".StoryActivity" />
+            android:parentActivityName=".Activity.StoryActivity" />
         <activity
-            android:name=".StoryActivity"
+            android:name=".Activity.StoryActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".Activity.MainActivity" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".Activity.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,7 +44,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".Activity.MainActivity"
             android:exported="true" />
     </application>
 

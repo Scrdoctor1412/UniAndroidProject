@@ -1,23 +1,24 @@
-package phdhtl.k63cntt1.nguyen;
+package phdhtl.k63cntt1.nguyen.Activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.database.CursorWindow;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.graphics.Insets;
 import androidx.core.view.GravityCompat;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
+
+import java.lang.reflect.Field;
+
+import phdhtl.k63cntt1.nguyen.R;
 
 public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
@@ -31,6 +32,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initView();
+
+        //for fixing error Row too big to fit into CursorWindow
+        try {
+            @SuppressLint("PrivateApi")
+            Field field =
+                    CursorWindow.class.getDeclaredField("sCursorWindowSize");
+            field.setAccessible(true);
+            field.set(null, 100 * 1024 * 1024); //the 100MB is the new size
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 

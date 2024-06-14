@@ -1,4 +1,4 @@
-package phdhtl.k63cntt1.nguyen;
+package phdhtl.k63cntt1.nguyen.detailsActivity;
 
 import android.content.Intent;
 import android.media.Image;
@@ -14,6 +14,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import java.util.Objects;
+
+import phdhtl.k63cntt1.nguyen.R;
 
 public class StoryDetailsActivity extends AppCompatActivity {
 
@@ -54,8 +56,8 @@ public class StoryDetailsActivity extends AppCompatActivity {
         edtmatruyen = findViewById(R.id.edtmatruyen);
         edttentruyen= findViewById(R.id.edttentruyen);
         edtnoidung = findViewById(R.id.edtnoidung);
-        edttacgia = findViewById(R.id.edttacgia);
-        edtnxb = findViewById(R.id.edtnxb);
+        edttacgia = findViewById(R.id.edttentacgia);
+        edtnxb = findViewById(R.id.edttennxb);
         edttheloai = findViewById(R.id.edttheloai);
         edtsochuong = findViewById(R.id.edtsochuong);
         edtluotlike = findViewById(R.id.edtluotlike);

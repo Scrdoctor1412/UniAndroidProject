@@ -1,10 +1,9 @@
-package phdhtl.k63cntt1.nguyen;
+package phdhtl.k63cntt1.nguyen.Activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.text.Html;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -16,6 +15,8 @@ import androidx.appcompat.widget.Toolbar;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import phdhtl.k63cntt1.nguyen.R;
+import phdhtl.k63cntt1.nguyen.detailsActivity.StoryDetailsActivity;
 import phdhtl.k63cntt1.nguyen.adapter.CustomStoryAdapter;
 import phdhtl.k63cntt1.nguyen.helper.ConvertHelper;
 import phdhtl.k63cntt1.nguyen.model.Story;

@@ -1,4 +1,4 @@
-package phdhtl.k63cntt1.nguyen;
+package phdhtl.k63cntt1.nguyen.Activity;
 
 import android.os.Bundle;
 import android.widget.ListView;
@@ -11,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
 
+import phdhtl.k63cntt1.nguyen.R;
 import phdhtl.k63cntt1.nguyen.adapter.AuthorAdapter;
 import phdhtl.k63cntt1.nguyen.model.Author;
 import phdhtl.k63cntt1.nguyen.model.User;
