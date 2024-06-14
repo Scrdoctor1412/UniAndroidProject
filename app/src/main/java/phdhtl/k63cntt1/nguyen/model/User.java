@@ -5,8 +5,6 @@ public class User {
     private String userName;
     private String email;
     private String passWord;
-    private String athGoogleId;
-    private int authType;
     private int level;
 
     public User() {
@@ -14,18 +12,15 @@ public class User {
         this.userName = "dummyName";
         this.email = "dummyEmail";
         this.passWord = "dummyPW";
-        this.athGoogleId = "dummyGGID";
-        this.authType = 0;
         this.level = 0;
     }
 
-    public User(String id, String userName, String email, String passWord, String athGoogleId, int authType, int level) {
+    public User(String id, String userName, String email, String passWord, int level) {
         this.id = id;
         this.userName = userName;
         this.email = email;
         this.passWord = passWord;
-        this.athGoogleId = athGoogleId;
-        this.authType = authType;
+
         this.level = level;
     }
 
@@ -59,22 +54,6 @@ public class User {
 
     public void setPassWord(String passWord) {
         this.passWord = passWord;
-    }
-
-    public String getAthGoogleId() {
-        return athGoogleId;
-    }
-
-    public void setAthGoogleId(String athGoogleId) {
-        this.athGoogleId = athGoogleId;
-    }
-
-    public int getAuthType() {
-        return authType;
-    }
-
-    public void setAuthType(int authType) {
-        this.authType = authType;
     }
 
     public int getLevel() {

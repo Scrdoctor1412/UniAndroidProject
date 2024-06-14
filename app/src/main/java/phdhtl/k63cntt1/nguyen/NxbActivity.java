@@ -1,19 +1,21 @@
 package phdhtl.k63cntt1.nguyen;
 
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.ImageView;
 import android.widget.ListView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-import model.Nxb;
+import phdhtl.k63cntt1.nguyen.adapter.CustomNxbAdapter;
+import phdhtl.k63cntt1.nguyen.helper.ConvertHelper;
+import phdhtl.k63cntt1.nguyen.model.Publisher;
 
 public class NxbActivity extends AppCompatActivity {
 
@@ -21,7 +23,7 @@ public class NxbActivity extends AppCompatActivity {
 
     Toolbar toolbar;
 
-    ArrayList<Nxb> listNxb;
+    ArrayList<Publisher> listNxb;
     CustomNxbAdapter myadapter;
 
 
@@ -32,7 +34,13 @@ public class NxbActivity extends AppCompatActivity {
         setContentView(R.layout.activity_nxb);
 
         initView();
-        listNxb.add(new Nxb("nxb01","testingnxb","nxbtesting",R.drawable.author));
+
+        ImageView testImg = new ImageView(getApplicationContext());
+        testImg.setImageResource(R.drawable.author);
+        Bitmap bm = ((BitmapDrawable)testImg.getDrawable()).getBitmap();
+        String bmText = ConvertHelper.BitMapToString(bm);
+
+        listNxb.add(new Publisher("nxb01","testingnxb","nxbtesting",bmText));
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

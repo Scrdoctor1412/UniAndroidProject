@@ -1,7 +1,6 @@
-package phdhtl.k63cntt1.nguyen;
+package phdhtl.k63cntt1.nguyen.adapter;
 
 import android.app.Activity;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,17 +12,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
-import java.util.zip.Inflater;
 
-import model.Nxb;
+import phdhtl.k63cntt1.nguyen.R;
+import phdhtl.k63cntt1.nguyen.helper.ConvertHelper;
+import phdhtl.k63cntt1.nguyen.model.Publisher;
 
-public class CustomNxbAdapter extends ArrayAdapter<Nxb> {
+public class CustomNxbAdapter extends ArrayAdapter<Publisher> {
 
-    ArrayList<Nxb> mylist;
+    ArrayList<Publisher> mylist;
     Activity context;
 
     int idLayout;
-    public CustomNxbAdapter(Activity context, int idLayout, ArrayList<Nxb> mylist) {
+    public CustomNxbAdapter(Activity context, int idLayout, ArrayList<Publisher> mylist) {
         super(context, idLayout, mylist);
         this.context = context;
         this.idLayout = idLayout;
@@ -35,10 +35,10 @@ public class CustomNxbAdapter extends ArrayAdapter<Nxb> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater myInflater = context.getLayoutInflater();
         convertView = myInflater.inflate(idLayout, null);
-        Nxb mynxb = mylist.get(position);
+        Publisher mynxb = mylist.get(position);
 
         ImageView imgdaidien = convertView.findViewById(R.id.imgdaidiennxb);
-        imgdaidien.setImageResource(mynxb.getImgdaidien());
+        imgdaidien.setImageBitmap(ConvertHelper.StringToBitMap(mynxb.getImgdaidien()));
 
         TextView txtmanxb, txttennxb, txtgioithieu;
         txtmanxb = convertView.findViewById(R.id.txtmanxb);

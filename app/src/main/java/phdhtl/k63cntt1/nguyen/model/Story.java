@@ -1,29 +1,29 @@
-package model;
+package phdhtl.k63cntt1.nguyen.model;
 
-public class Truyen {
+public class Story {
     private String matruyen;
     private String tentruyen;
-    private int anhbia;
+    private String anhbia;
     private String noidung;
-    private String tacgia;
-    private String nxb;
     private String theloai;
     private int sochuong;
-
     private int luotxem;
     private int luotlike;
+    private String manxb;
+    private String matg;
 
-    public Truyen(String matruyen, String tentruyen, int anhbia, String noidung, String tacgia, String nxb, String theloai, int sochuong, int luotlike,int luotxem) {
+
+    public Story(String matruyen, String tentruyen, String anhbia, String noidung, String theloai, int sochuong, int luotxem, int luotlike, String manxb, String matg) {
         this.matruyen = matruyen;
         this.tentruyen = tentruyen;
         this.anhbia = anhbia;
         this.noidung = noidung;
-        this.tacgia = tacgia;
-        this.nxb = nxb;
         this.theloai = theloai;
         this.sochuong = sochuong;
-        this.luotlike = luotlike;
         this.luotxem = luotxem;
+        this.luotlike = luotlike;
+        this.manxb = manxb;
+        this.matg = matg;
     }
 
     public int getLuotxem() {
@@ -58,11 +58,11 @@ public class Truyen {
         this.tentruyen = tentruyen;
     }
 
-    public int getAnhbia() {
+    public String getAnhbia() {
         return anhbia;
     }
 
-    public void setAnhbia(int anhbia) {
+    public void setAnhbia(String anhbia) {
         this.anhbia = anhbia;
     }
 
@@ -72,22 +72,6 @@ public class Truyen {
 
     public void setNoidung(String noidung) {
         this.noidung = noidung;
-    }
-
-    public String getTacgia() {
-        return tacgia;
-    }
-
-    public void setTacgia(String tacgia) {
-        this.tacgia = tacgia;
-    }
-
-    public String getNxb() {
-        return nxb;
-    }
-
-    public void setNxb(String nxb) {
-        this.nxb = nxb;
     }
 
     public String getTheloai() {
@@ -104,5 +88,20 @@ public class Truyen {
 
     public void setSochuong(int sochuong) {
         this.sochuong = sochuong;
+    }
+    public String getManxb() {
+        return manxb;
+    }
+
+    public void setManxb(String manxb) {
+        this.manxb = manxb;
+    }
+
+    public String getMatg() {
+        return matg;
+    }
+
+    public void setMatg(String matg) {
+        this.matg = matg;
     }
 }

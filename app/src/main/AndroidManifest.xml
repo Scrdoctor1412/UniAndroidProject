@@ -18,7 +18,7 @@
         <activity
             android:name=".UserActivity"
             android:exported="false" />
-
+        <activity
             android:name=".NxbActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity"/>

@@ -57,18 +57,15 @@ public class MainActivity extends AppCompatActivity {
                     Intent myIntent = new Intent(getApplicationContext(), StoryActivity.class);
                     startActivity(myIntent);
                 }else if(item.getItemId() == R.id.item_user){
-                    Intent userActivityLauncher = new Intent(MainActivity.this, UserActivity.class);
-                    startActivity(userActivityLauncher);
-                }else if(item.getItemId() == R.id.item_logout){
 
+                }else if(item.getItemId() == R.id.item_logout){
 
                 } else if (item.getItemId() == R.id.item_author) {
                     Intent userActivityLauncher = new Intent(MainActivity.this, AuthorActivity.class);
                     startActivity(userActivityLauncher);
-                }else if(item.getItemId() == R.id.item_author){
-
                 }else if(item.getItemId() == R.id.item_user_manager){
-
+                    Intent userActivityLauncher = new Intent(MainActivity.this, UserActivity.class);
+                    startActivity(userActivityLauncher);
                 }else if(item.getItemId() == R.id.item_publisher){
                     Intent myIntent = new Intent(getApplicationContext(), NxbActivity.class);
                     startActivity(myIntent);

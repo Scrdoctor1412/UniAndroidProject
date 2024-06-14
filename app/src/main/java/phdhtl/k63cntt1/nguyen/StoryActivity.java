@@ -1,29 +1,29 @@
 package phdhtl.k63cntt1.nguyen;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.text.Html;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 
-import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-import model.Truyen;
+import phdhtl.k63cntt1.nguyen.adapter.CustomStoryAdapter;
+import phdhtl.k63cntt1.nguyen.helper.ConvertHelper;
+import phdhtl.k63cntt1.nguyen.model.Story;
 
 public class StoryActivity extends AppCompatActivity {
 
     ListView storylv;
-    ArrayList<Truyen> listTruyen;
+    ArrayList<Story> listTruyen;
     CustomStoryAdapter myAdapter;
 
     Toolbar toolbar;
@@ -33,7 +33,12 @@ public class StoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_story);
 
         initView();
-//        listTruyen.add(new Truyen("T01", "testing", R.drawable.author, "tg01", "test", "test", "kinh di", 32, 10000, 100000));
+        ImageView img = new ImageView(getApplicationContext());
+        img.setImageResource(R.drawable.author);
+        Bitmap bm = ((BitmapDrawable)img.getDrawable()).getBitmap();
+        String bmText = ConvertHelper.BitMapToString(bm);
+
+        listTruyen.add(new Story("T01", "testing", bmText , "tg01", "test", 10, 10000, 32,"",""));
 
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
@@ -43,16 +48,16 @@ public class StoryActivity extends AppCompatActivity {
         storylv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Truyen mytruyen = listTruyen.get(position);
+                Story mytruyen = listTruyen.get(position);
                 Intent myIntent = new Intent(getApplicationContext(), StoryDetailsActivity.class);
                 myIntent.putExtra("matruyen", mytruyen.getMatruyen());
                 myIntent.putExtra("tentruyen", mytruyen.getTentruyen());
-                myIntent.putExtra("tacgia", mytruyen.getTacgia());
+//                myIntent.putExtra("tacgia", mytruyen.getTentg());
                 myIntent.putExtra("noidung", mytruyen.getNoidung());
                 myIntent.putExtra("theloai", mytruyen.getTheloai());
                 myIntent.putExtra("sochuong", mytruyen.getSochuong());
                 myIntent.putExtra("anhbia", mytruyen.getAnhbia());
-                myIntent.putExtra("nxb", mytruyen.getNxb());
+//                myIntent.putExtra("nxb", mytruyen.getTennxb());
                 myIntent.putExtra("luotlike",mytruyen.getLuotlike());
                 myIntent.putExtra("luotxem",mytruyen.getLuotxem());
 

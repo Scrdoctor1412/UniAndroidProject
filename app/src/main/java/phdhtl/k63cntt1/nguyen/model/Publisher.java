@@ -1,12 +1,12 @@
-package model;
+package phdhtl.k63cntt1.nguyen.model;
 
-public class Nxb {
+public class Publisher {
     private String manxb;
     private String tennxb;
     private String gioithieu;
-    private int imgdaidien;
+    private String imgdaidien;
 
-    public Nxb(String manxb, String tennxb, String gioithieu, int imgdaidien) {
+    public Publisher(String manxb, String tennxb, String gioithieu, String imgdaidien) {
         this.manxb = manxb;
         this.tennxb = tennxb;
         this.gioithieu = gioithieu;
@@ -37,11 +37,11 @@ public class Nxb {
         this.gioithieu = gioithieu;
     }
 
-    public int getImgdaidien() {
+    public String getImgdaidien() {
         return imgdaidien;
     }
 
-    public void setImgdaidien(int imgdaidien) {
+    public void setImgdaidien(String imgdaidien) {
         this.imgdaidien = imgdaidien;
     }
 }
