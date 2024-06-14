@@ -2,6 +2,7 @@ package phdhtl.k63cntt1.nguyen.detailsActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.CursorWindow;
@@ -17,10 +18,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -40,13 +44,53 @@ public class NxbDetailsActivity extends AppCompatActivity {
 
     Button btnluu, btnpickimg;
 
+    FloatingActionButton fabEditNxb;
     String imgText;
+    int EventCode;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nxb_details);
 
         initView();
+
+        Intent intent = getIntent();
+        EventCode = intent.getIntExtra("EventCode", 0);
+        if(EventCode == 1){
+            edtmanxb.setEnabled(true);
+            fabEditNxb.setVisibility(View.INVISIBLE);
+            btnpickimg.setVisibility(View.VISIBLE);
+            btnluu.setVisibility(View.VISIBLE);
+        }else if(EventCode == 2){
+            edtmanxb.setEnabled(false);
+            fabEditNxb.setVisibility(View.INVISIBLE);
+            String ma = intent.getStringExtra("manxb");
+            String ten = intent.getStringExtra("tennxb");
+            String gth = intent.getStringExtra("gthnxb");
+            String img = intent.getStringExtra("imgnxb");
+
+            edtmanxb.setText(ma);
+            edtgthnxb.setText(gth);
+            edttennxb.setText(ten);
+            imgdaidien.setImageBitmap(ConvertHelper.StringToBitMap(img));
+
+        }else if(EventCode == 0){
+            edtmanxb.setEnabled(false);
+            edttennxb.setEnabled(false);
+            edtgthnxb.setEnabled(false);
+            btnpickimg.setVisibility(View.INVISIBLE);
+            btnluu.setVisibility(View.INVISIBLE);
+            fabEditNxb.setVisibility(View.VISIBLE);
+            String ma = intent.getStringExtra("manxb");
+            String ten = intent.getStringExtra("tennxb");
+            String gth = intent.getStringExtra("gthnxb");
+            String img = intent.getStringExtra("imgnxb");
+
+            edtmanxb.setText(ma);
+            edtgthnxb.setText(gth);
+            edttennxb.setText(ten);
+            imgdaidien.setImageBitmap(ConvertHelper.StringToBitMap(img));
+        }
         //for fixing error Row too big to fit into CursorWindow
         try {
             @SuppressLint("PrivateApi")
@@ -57,11 +101,26 @@ public class NxbDetailsActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        //Toolbar setup code
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        //Database helper
         DBHelper dbh = new DBHelper(this);
+
+        fabEditNxb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edtmanxb.setEnabled(true);
+                edttennxb.setEnabled(true);
+                edtgthnxb.setEnabled(true);
+                btnluu.setVisibility(View.VISIBLE);
+                btnpickimg.setVisibility(View.VISIBLE);
+            }
+        });
+
+        //Button picking image logic
         btnpickimg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,21 +131,46 @@ public class NxbDetailsActivity extends AppCompatActivity {
         btnluu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = getIntent();
-                String ma = edtmanxb.getText().toString();
-                String ten = edttennxb.getText().toString();
-                String gth = edtgthnxb.getText().toString();
-                String img = ConvertHelper.BitMapToString( ((BitmapDrawable)imgdaidien.getDrawable()).getBitmap() );
-                myIntent.putExtra("manxb", ma);
-                myIntent.putExtra("tennxb", ten);
-                myIntent.putExtra("gthnxb", gth);
-                myIntent.putExtra("imgnxb", img);
-                setResult(33, myIntent);
+                if(EventCode == 1){
+                    Intent myIntent = getIntent();
+                    String ma = edtmanxb.getText().toString();
+                    String ten = edttennxb.getText().toString();
+                    String gth = edtgthnxb.getText().toString();
+                    String img = ConvertHelper.BitMapToString( ((BitmapDrawable)imgdaidien.getDrawable()).getBitmap() );
+                    myIntent.putExtra("manxb", ma);
+                    myIntent.putExtra("tennxb", ten);
+                    myIntent.putExtra("gthnxb", gth);
+                    myIntent.putExtra("imgnxb", img);
+                    setResult(33, myIntent);
 
-                SQLiteDatabase db = dbh.getWritableDatabase();
-                String sqlInsertNXB = "insert into publisher values('"+ma+"', '"+ten+"', '"+gth+"', '"+img+"')";
-                db.execSQL(sqlInsertNXB);
-                finish();
+                    SQLiteDatabase db = dbh.getWritableDatabase();
+                    String sqlInsertNXB = "insert into publisher values('"+ma+"', '"+ten+"', '"+gth+"', '"+img+"')";
+                    db.execSQL(sqlInsertNXB);
+                    finish();
+                }else if(EventCode == 2){
+                    Intent myIntent = getIntent();
+                    String ma = edtmanxb.getText().toString();
+                    String ten = edttennxb.getText().toString();
+                    String gth = edtgthnxb.getText().toString();
+                    String img = ConvertHelper.BitMapToString( ((BitmapDrawable)imgdaidien.getDrawable()).getBitmap() );
+                    ContentValues myvalue = new ContentValues();
+                    myvalue.put("manxb",ma);
+                    myvalue.put("tennxb", ten);
+                    myvalue.put("gioithieu", gth);
+                    myvalue.put("imgdaidien", img);
+                    setResult(34, myIntent);
+
+                    SQLiteDatabase db = dbh.getWritableDatabase();
+                    int n = db.update("publisher", myvalue, "manxb = ?", new String[]{ma});
+                    String msg = "";
+                    if(n==0){
+                        msg = "No record was updated!";
+                    }else{
+                        msg = n + " record was updated!";
+                    }
+                    Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+                    finish();
+                }
             }
         });
     }
@@ -99,6 +183,7 @@ public class NxbDetailsActivity extends AppCompatActivity {
         edtgthnxb = findViewById(R.id.edtgthnxb);
         btnluu = findViewById(R.id.btnluunxb);
         btnpickimg = findViewById(R.id.btnpickimgnxb);
+        fabEditNxb = findViewById(R.id.fab_edit_nxb);
     }
 
     public void pickImage() {

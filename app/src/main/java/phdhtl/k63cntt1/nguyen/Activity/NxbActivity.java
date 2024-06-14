@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -73,6 +75,20 @@ public class NxbActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        nxblv.bringToFront();
+        nxblv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent myIntent = new Intent(getApplicationContext(), NxbDetailsActivity.class);
+                myIntent.putExtra("EventCode",0);
+                myIntent.putExtra("manxb",listNxb.get(position).getManxb());
+                myIntent.putExtra("tennxb",listNxb.get(position).getTennxb());
+                myIntent.putExtra("gthnxb",listNxb.get(position).getGioithieu());
+                myIntent.putExtra("imgnxb",listNxb.get(position).getImgdaidien());
+                startActivityForResult(myIntent, 99);
+            }
+        });
+
     }
 
     public void showList(){
@@ -102,6 +118,7 @@ public class NxbActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.item_insert){
             Intent myIntent = new Intent(getApplicationContext(), NxbDetailsActivity.class);
+            myIntent.putExtra("EventCode", 1);
             startActivityForResult(myIntent, 99);
         }
         return super.onOptionsItemSelected(item);
@@ -132,6 +149,8 @@ public class NxbActivity extends AppCompatActivity {
 //                Toast.makeText(getApplicationContext(),"Không thành công", Toast.LENGTH_LONG).show();
 //
 //            }
+            showList();
+        } else if (requestCode == 99 && resultCode == 34) {
             showList();
         }
         super.onActivityResult(requestCode, resultCode, data);
