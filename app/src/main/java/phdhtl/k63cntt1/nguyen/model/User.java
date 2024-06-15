@@ -6,7 +6,6 @@ public class User {
     private String email;
     private String passWord;
     private int level;
-
     private String imgdaidien;
 
     public User() {
@@ -18,7 +17,7 @@ public class User {
         this.imgdaidien = "";
     }
 
-    public User(String id, String userName, String email, String passWord, int level, String imgdaidien) {
+    public User(String id, String userName, String email, String passWord,  String imgdaidien, int level) {
         this.id = id;
         this.userName = userName;
         this.email = email;

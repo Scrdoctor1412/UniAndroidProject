@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants">
 
     <ImageView
         android:id="@+id/iv_avatar_user"
@@ -43,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="191dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="2dp"
         android:text="Sửa"
         app:layout_constraintEnd_toStartOf="@+id/btn_delete_user"
@@ -55,7 +56,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="9dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="104dp"
         android:layout_marginEnd="28dp"
         android:text="Xóa"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,7 +64,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtusrname"
+        android:id="@+id/txtusername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
@@ -80,6 +81,26 @@
         android:layout_marginTop="10dp"
         android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/tv_email"
-        app:layout_constraintTop_toBottomOf="@+id/txtusrname" />
+        app:layout_constraintTop_toBottomOf="@+id/txtusername" />
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="10dp"
+        android:text="Level:"
+        app:layout_constraintStart_toEndOf="@+id/iv_avatar_user"
+        app:layout_constraintTop_toBottomOf="@+id/tv_email" />
+
+    <TextView
+        android:id="@+id/txtleveluser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="10dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/textView24"
+        app:layout_constraintTop_toBottomOf="@+id/txtemail" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

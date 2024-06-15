@@ -5,11 +5,10 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".detailsActivity.NxbDetailsActivity">
-
+    tools:context=".detailsActivity.UserDetailsActivity">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_edit_nxb"
+        android:id="@+id/fab_edit_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
@@ -20,69 +19,55 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
-        android:id="@+id/btnluunxb"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="152dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="159dp"
-        android:gravity="center"
-        android:text="Lưu"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarnxbdetails"
+        android:id="@+id/toolbaruserdetails"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="1dp" />
 
     <ImageView
-        android:id="@+id/imgdaidiennxb2"
+        android:id="@+id/imgdaidienuser"
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:layout_marginStart="140dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="141dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="142dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarnxbdetails"
+        app:layout_constraintTop_toBottomOf="@+id/toolbaruserdetails"
         app:srcCompat="@drawable/author"
         tools:srcCompat="@tools:sample/avatars" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="409dp"
-        android:layout_height="179dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="72dp"
+        android:id="@+id/linearLayout3"
+        android:layout_width="408dp"
+        android:layout_height="247dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="3dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgdaidiennxb2">
+        app:layout_constraintTop_toBottomOf="@+id/btnpicimguser">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="53dp"
+            android:layout_height="51dp"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView12"
+                android:id="@+id/justatxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Mã NXB:" />
+                android:text="IdUser:" />
 
             <EditText
-                android:id="@+id/editmanxb"
+                android:id="@+id/edtiduserdetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -92,18 +77,18 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView20"
+                android:id="@+id/textView28"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Tên NXB:" />
+                android:text="Username:" />
 
             <EditText
-                android:id="@+id/edttennxb2"
+                android:id="@+id/edtusernamedetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -113,18 +98,18 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView21"
+                android:id="@+id/textView29"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Giới Thiệu: " />
+                android:text="Email:" />
 
             <EditText
-                android:id="@+id/edtgthnxb"
+                android:id="@+id/edtemaildetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -132,17 +117,64 @@
                 android:inputType="text" />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Password:" />
+
+            <EditText
+                android:id="@+id/edtpassworddetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="263dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Level:" />
+
+            <Spinner
+                android:id="@+id/spinneruser"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnpickimgnxb"
+        android:id="@+id/btnpicimguser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
+        android:layout_marginStart="151dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="154dp"
         android:text="Chọn ảnh"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgdaidiennxb2" />
+        app:layout_constraintTop_toBottomOf="@+id/imgdaidienuser" />
+
+    <Button
+        android:id="@+id/btnluuuser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="161dp"
+        android:layout_marginTop="31dp"
+        android:text="Lưu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 </androidx.constraintlayout.widget.ConstraintLayout>
