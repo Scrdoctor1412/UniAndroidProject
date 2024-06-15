@@ -1,7 +1,5 @@
 package phdhtl.k63cntt1.nguyen.Activity;
 
-import static androidx.core.app.ActivityCompat.startActivityForResult;
-
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -11,35 +9,26 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
 import phdhtl.k63cntt1.nguyen.R;
-import phdhtl.k63cntt1.nguyen.adapter.AuthorAdapter;
+import phdhtl.k63cntt1.nguyen.adapter.CustomAuthorAdapter;
 import phdhtl.k63cntt1.nguyen.detailsActivity.AuthorDetailsActivity;
 import phdhtl.k63cntt1.nguyen.helper.DBHelper;
 import phdhtl.k63cntt1.nguyen.model.Author;
-import phdhtl.k63cntt1.nguyen.model.Publisher;
-import phdhtl.k63cntt1.nguyen.model.User;
 
 public class AuthorActivity extends AppCompatActivity {
     private ListView lvAuthor;
-    private AuthorAdapter authorAdapter;
+    private CustomAuthorAdapter customAuthorAdapter;
     private ArrayList<Author> authorList;
     Toolbar toolbar;
     DBHelper dbh;
@@ -99,7 +88,7 @@ public class AuthorActivity extends AppCompatActivity {
                 Author newauthor = new Author(cs.getString(0),cs.getString(1),cs.getString(2),cs.getString(3));
                 Log.d("newtg", cs.getString(0));
                 authorList.add(newauthor);
-                authorAdapter.notifyDataSetChanged();
+                customAuthorAdapter.notifyDataSetChanged();
             }
         }catch (Exception e){
             Log.d("author db error", e.getMessage());
@@ -109,8 +98,8 @@ public class AuthorActivity extends AppCompatActivity {
     private void initView() {
         lvAuthor = findViewById(R.id.lv_author);
         authorList = new ArrayList<>();
-        authorAdapter = new AuthorAdapter(this, R.layout.custom_author_row ,authorList);
-        lvAuthor.setAdapter(authorAdapter);
+        customAuthorAdapter = new CustomAuthorAdapter(this, R.layout.custom_author_row ,authorList);
+        lvAuthor.setAdapter(customAuthorAdapter);
         toolbar = findViewById(R.id.toolbarauthor);
 
     }

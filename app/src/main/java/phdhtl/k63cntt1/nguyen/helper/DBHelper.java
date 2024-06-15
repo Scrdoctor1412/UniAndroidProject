@@ -30,7 +30,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sqlCreateUsers = "create table if not exists users(mauser varchar(10) primary key, username text, password text, level integer)";
+        String sqlCreateUsers = "create table if not exists users(mauser varchar(10) primary key, username text, email text ,password text, imgdaidien text,level integer)";
         String sqlCreateTruyen = "create table if not exists stories(matruyen varchar(10) primary key, tentruyen text, anhbia text, noidung text, tennxb text, luotlike integer, luotxem integer, matacgia varchar(10), manxb varchar(10), " +
                 "foreign key (matacgia) references tacgias(matacgia)," +
                 "foreign key (manxb) references nxbs(manxb)" +
@@ -51,6 +51,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.execSQL(sqlCreatePublisher);
         db.execSQL(sqlCreateAuthor);
+        db.execSQL(sqlCreateUsers);
 
 //        ImageView testImg;
 //        testImg.setImageResource(R.drawable.author);

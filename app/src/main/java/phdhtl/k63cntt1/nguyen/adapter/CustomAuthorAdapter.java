@@ -18,23 +18,20 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 import phdhtl.k63cntt1.nguyen.R;
 import phdhtl.k63cntt1.nguyen.detailsActivity.AuthorDetailsActivity;
-import phdhtl.k63cntt1.nguyen.detailsActivity.NxbDetailsActivity;
 import phdhtl.k63cntt1.nguyen.helper.ConvertHelper;
 import phdhtl.k63cntt1.nguyen.helper.DBHelper;
 import phdhtl.k63cntt1.nguyen.model.Author;
-import phdhtl.k63cntt1.nguyen.model.User;
 
-public class AuthorAdapter extends ArrayAdapter<Author> {
+public class CustomAuthorAdapter extends ArrayAdapter<Author> {
     private final Activity context;
     private ArrayList<Author> authorArrayList;
     private int idLayout;
 
     DBHelper dbh;
-    public AuthorAdapter(Activity context, int idLayout ,ArrayList<Author> authorArrayList) {
+    public CustomAuthorAdapter(Activity context, int idLayout , ArrayList<Author> authorArrayList) {
         super(context, idLayout, authorArrayList);
         this.context = context;
         this.authorArrayList = authorArrayList;
@@ -83,7 +80,7 @@ public class AuthorAdapter extends ArrayAdapter<Author> {
                     msg = n + "record was deleted";
                 }
                 Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
-                AuthorAdapter.this.notifyDataSetChanged();
+                CustomAuthorAdapter.this.notifyDataSetChanged();
             }
         });
 
