@@ -104,9 +104,8 @@ public class NxbActivity extends AppCompatActivity {
                 myadapter.notifyDataSetChanged();
             }
         }catch (Exception e){
-            Log.d("some db error", e.getMessage());
+            Log.d("publisher db error", e.getMessage());
         }
-
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

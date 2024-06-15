@@ -50,6 +50,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 ")";
 
         db.execSQL(sqlCreatePublisher);
+        db.execSQL(sqlCreateAuthor);
+
 //        ImageView testImg;
 //        testImg.setImageResource(R.drawable.author);
 //        Bitmap bm = ((BitmapDrawable)testImg.getDrawable()).getBitmap();
