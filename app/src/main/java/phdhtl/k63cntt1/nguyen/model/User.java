@@ -7,21 +7,24 @@ public class User {
     private String passWord;
     private int level;
 
+    private String imgdaidien;
+
     public User() {
         this.id = "dummyID";
         this.userName = "dummyName";
         this.email = "dummyEmail";
         this.passWord = "dummyPW";
         this.level = 0;
+        this.imgdaidien = "";
     }
 
-    public User(String id, String userName, String email, String passWord, int level) {
+    public User(String id, String userName, String email, String passWord, int level, String imgdaidien) {
         this.id = id;
         this.userName = userName;
         this.email = email;
         this.passWord = passWord;
-
         this.level = level;
+        this.imgdaidien = imgdaidien;
     }
 
     public String getId() {
@@ -62,5 +65,13 @@ public class User {
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    public String getImgdaidien() {
+        return imgdaidien;
+    }
+
+    public void setImgdaidien(String imgdaidien) {
+        this.imgdaidien = imgdaidien;
     }
 }
