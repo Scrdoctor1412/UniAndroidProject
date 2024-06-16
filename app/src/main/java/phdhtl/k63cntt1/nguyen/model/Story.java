@@ -6,14 +6,14 @@ public class Story {
     private String anhbia;
     private String noidung;
     private String theloai;
+    private String nxb;
+    private String tacgia;
     private int sochuong;
     private int luotxem;
     private int luotlike;
-    private String manxb;
-    private String matg;
 
 
-    public Story(String matruyen, String tentruyen, String anhbia, String noidung, String theloai, int sochuong, int luotxem, int luotlike, String manxb, String matg) {
+    public Story(String matruyen, String tentruyen, String anhbia, String noidung, String theloai, String nxb, String tacgia, int sochuong, int luotxem, int luotlike) {
         this.matruyen = matruyen;
         this.tentruyen = tentruyen;
         this.anhbia = anhbia;
@@ -22,8 +22,8 @@ public class Story {
         this.sochuong = sochuong;
         this.luotxem = luotxem;
         this.luotlike = luotlike;
-        this.manxb = manxb;
-        this.matg = matg;
+        this.nxb = nxb;
+        this.tacgia = tacgia;
     }
 
     public int getLuotxem() {
@@ -89,19 +89,20 @@ public class Story {
     public void setSochuong(int sochuong) {
         this.sochuong = sochuong;
     }
-    public String getManxb() {
-        return manxb;
+
+    public String getNxb() {
+        return nxb;
     }
 
-    public void setManxb(String manxb) {
-        this.manxb = manxb;
+    public void setNxb(String nxb) {
+        this.nxb = nxb;
     }
 
-    public String getMatg() {
-        return matg;
+    public String getTacgia() {
+        return tacgia;
     }
 
-    public void setMatg(String matg) {
-        this.matg = matg;
+    public void setTacgia(String tacgia) {
+        this.tacgia = tacgia;
     }
 }

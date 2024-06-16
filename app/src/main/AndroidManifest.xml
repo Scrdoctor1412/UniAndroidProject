@@ -13,9 +13,17 @@
         android:theme="@style/Theme.FinalProject"
         tools:targetApi="31">
         <activity
+            android:name=".detailsActivity.StoryTypeDetailsActivity"
+            android:exported="false"
+            android:parentActivityName=".Activity.StoryTypeActivity"/>
+        <activity
+            android:name=".Activity.StoryTypeActivity"
+            android:exported="false"
+            android:parentActivityName=".Activity.MainActivity" />
+        <activity
             android:name=".detailsActivity.UserDetailsActivity"
             android:exported="false"
-            android:parentActivityName=".Activity.UserActivity"/>
+            android:parentActivityName=".Activity.UserActivity" />
         <activity
             android:name=".detailsActivity.AuthorDetailsActivity"
             android:exported="false"
