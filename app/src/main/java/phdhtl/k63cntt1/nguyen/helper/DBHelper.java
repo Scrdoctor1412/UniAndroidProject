@@ -31,16 +31,16 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sqlCreateUsers = "create table if not exists users(mauser varchar(10) primary key, username text, email text ,password text, imgdaidien text,level integer)";
-        String sqlCreateTruyen = "create table if not exists stories(matruyen varchar(10) primary key, tentruyen text, anhbia text, noidung text, tennxb text, luotlike integer, luotxem integer, matacgia varchar(10), manxb varchar(10), " +
-                "foreign key (matacgia) references tacgias(matacgia)," +
-                "foreign key (manxb) references nxbs(manxb)" +
+        String sqlCreateStory = "create table if not exists stories(matruyen varchar(10) primary key, tentruyen text, noidung text, imgdaidien text, luotlike integer, luotxem integer, matacgia varchar(10), manxb varchar(10)," +
+                "foreign key (matacgia) references authors(matacgia)," +
+                "foreign key (manxb) references publisher(manxb)" +
                 ")";
         String sqlCreateAuthor = "create table if not exists authors(matacgia varchar(10) primary key, tentacgia text, gioithieu text, imgdaidien text)";
         String sqlCreatePublisher = "create table if not exists publisher(manxb varchar(10) primary key, tennxb text, gioithieu text, imgdaidien text)";
-        String sqlCreateType = "create table if not exists types(matl varchar(10) primarykey, tentl text, noidungtl text)";
+        String sqlCreateType = "create table if not exists types(matl varchar(10) primary key, tentl text, noidungtl text)";
         String sqlCreateTypeStory = "create table if not exists typestory(matl varchar(10), matruyen varchar(10)," +
                 "foreign key (matl) references types(matl)," +
-                "foreign key (matruyen) references stories(matruyen)," +
+                "foreign key (matruyen) references stories(matruyen)" +
                 ")";
         String sqlCreateChapter = "create table if not exists chapters(machuong varchar(10) primary key, chuongso integer, chuongten text, matruyen varchar(10)," +
                 "foreign key (matruyen) references stories(matruyen)" +
@@ -52,7 +52,9 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(sqlCreatePublisher);
         db.execSQL(sqlCreateAuthor);
         db.execSQL(sqlCreateUsers);
-
+        db.execSQL(sqlCreateType);
+        db.execSQL(sqlCreateTypeStory);
+        db.execSQL(sqlCreateStory);
 //        ImageView testImg;
 //        testImg.setImageResource(R.drawable.author);
 //        Bitmap bm = ((BitmapDrawable)testImg.getDrawable()).getBitmap();

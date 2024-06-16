@@ -39,7 +39,7 @@ public class StoryActivity extends AppCompatActivity {
         Bitmap bm = ((BitmapDrawable)img.getDrawable()).getBitmap();
         String bmText = ConvertHelper.BitMapToString(bm);
 
-        listTruyen.add(new Story("T01", "testing", bmText , "tg01", "test", 10, 10000, 32,"",""));
+//        listTruyen.add(new Story("T01", "testing", bmText , "tg01", "test", 10, 10000, 32,"",""));
 
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
