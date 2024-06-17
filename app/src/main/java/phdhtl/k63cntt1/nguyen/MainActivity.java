@@ -43,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
         drawerToggle.syncState();
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        toolbar.setNavigationIcon(R.drawable.iconmenu);
+
         navigationView.bringToFront();
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -51,19 +54,30 @@ public class MainActivity extends AppCompatActivity {
 
                     Log.d("Home", "clicked");
                 }else if(item.getItemId() == R.id.item_story){
-
+                    Intent myIntent = new Intent(getApplicationContext(), StoryActivity.class);
+                    startActivity(myIntent);
                 }else if(item.getItemId() == R.id.item_user){
                     Intent userActivityLauncher = new Intent(MainActivity.this, UserActivity.class);
                     startActivity(userActivityLauncher);
                 }else if(item.getItemId() == R.id.item_logout){
 
+
                 } else if (item.getItemId() == R.id.item_author) {
                     Intent userActivityLauncher = new Intent(MainActivity.this, AuthorActivity.class);
                     startActivity(userActivityLauncher);
+                }else if(item.getItemId() == R.id.item_author){
+
+                }else if(item.getItemId() == R.id.item_user_manager){
+
+                }else if(item.getItemId() == R.id.item_publisher){
+                    Intent myIntent = new Intent(getApplicationContext(), NxbActivity.class);
+                    startActivity(myIntent);
                 }
                 return false;
             }
         });
+
+
     }
 
     @Override
