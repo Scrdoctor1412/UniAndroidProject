@@ -12,7 +12,7 @@ public class Story {
     private int luotlike;
 
 
-    public Story(String matruyen, String tentruyen, String noidung, String anhbia, String theloai, String nxb, String tacgia, int luotxem, int luotlike) {
+    public Story(String matruyen, String tentruyen, String noidung, String anhbia, String theloai, String tacgia, String nxb, int luotxem, int luotlike) {
         this.matruyen = matruyen;
         this.tentruyen = tentruyen;
         this.anhbia = anhbia;

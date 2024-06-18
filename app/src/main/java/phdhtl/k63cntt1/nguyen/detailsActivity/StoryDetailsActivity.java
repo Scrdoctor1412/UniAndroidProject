@@ -11,6 +11,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +22,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -57,6 +61,12 @@ public class StoryDetailsActivity extends AppCompatActivity {
     int EventCode;
     Intent intent;
 
+    private Animation rotateOpen;
+    private Animation rotateClose;
+    private Animation fromBottom;
+    private Animation toBottom;
+    Boolean clicked = false;
+    FloatingActionButton fabAdd, fabEdit, fabGallery;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,6 +97,62 @@ public class StoryDetailsActivity extends AppCompatActivity {
 //
 //        edtluotlike.setText(myIntent.getIntExtra("luotlike", 0)+"");
 //        edtluotxem.setText(myIntent.getIntExtra("luotxem",0)+"");
+        if(EventCode == 0){
+            edtmatruyen.setEnabled(false);
+            edttentruyen.setEnabled(false);
+            edtluotlike.setEnabled(false);
+            edtluotxem.setEnabled(false);
+            edtnoidung.setEnabled(false);
+            sptheloai.setEnabled(false);
+            spnxb.setEnabled(false);
+            sptacgia.setEnabled(false);
+            btnluu.setVisibility(View.INVISIBLE);
+            btnpickimg.setVisibility(View.INVISIBLE);
+
+            edtmatruyen.setText(intent.getStringExtra("matruyen"));
+            edttentruyen.setText(intent.getStringExtra("tentruyen"));
+            edtnoidung.setText(intent.getStringExtra("noidung"));
+            int sc = intent.getIntExtra("sochuong",0);
+            edtsochuong.setText(""+sc);
+            String img = intent.getStringExtra("anhbia");
+            imgdaidien.setImageBitmap(ConvertHelper.StringToBitMap(img));
+
+            edtluotlike.setText(intent.getIntExtra("luotlike", 0)+"");
+            edtluotxem.setText(intent.getIntExtra("luotxem",0)+"");
+        }else if(EventCode == 2){
+            fabAdd.setVisibility(View.INVISIBLE);
+            edtmatruyen.setEnabled(false);
+
+            edtmatruyen.setText(intent.getStringExtra("matruyen"));
+            edttentruyen.setText(intent.getStringExtra("tentruyen"));
+            edtnoidung.setText(intent.getStringExtra("noidung"));
+            int sc = intent.getIntExtra("sochuong",0);
+            edtsochuong.setText(""+sc);
+            String img = intent.getStringExtra("anhbia");
+            imgdaidien.setImageBitmap(ConvertHelper.StringToBitMap(img));
+
+            edtluotlike.setText(intent.getIntExtra("luotlike", 0)+"");
+            edtluotxem.setText(intent.getIntExtra("luotxem",0)+"");
+        } else if (EventCode == 1) {
+            fabAdd.setVisibility(View.INVISIBLE);
+        }
+
+        fabEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edtmatruyen.setEnabled(true);
+                edttentruyen.setEnabled(true);
+                edtluotlike.setEnabled(true);
+                edtluotxem.setEnabled(true);
+                edtnoidung.setEnabled(true);
+                sptheloai.setEnabled(true);
+                spnxb.setEnabled(true);
+                sptacgia.setEnabled(true);
+                btnluu.setVisibility(View.VISIBLE);
+                btnpickimg.setVisibility(View.VISIBLE);
+                fabAdd.setVisibility(View.INVISIBLE);
+            }
+        });
 
         btnpickimg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,10 +197,45 @@ public class StoryDetailsActivity extends AppCompatActivity {
                     }
                     setResult(33);
                     finish();
+                }else if(EventCode == 2 || EventCode == 0){
+                    String ma = edtmatruyen.getText().toString();
+                    String ten = edttentruyen.getText().toString();
+                    String noidung = edtnoidung.getText().toString();
+                    String img = ConvertHelper.BitMapToString(((BitmapDrawable)imgdaidien.getDrawable()).getBitmap());
+                    int like = Integer.parseInt(edtluotlike.getText().toString());
+                    int view = Integer.parseInt(edtluotxem.getText().toString());
+//                    String matg = listTacGia
+                    int positionTacGia = sptacgia.getSelectedItemPosition();
+                    int positionNxb = spnxb.getSelectedItemPosition();
+                    String matg = listTacGia.get(positionTacGia).getId();
+                    String manxb = listNxb.get(positionNxb).getManxb();
+
+                    SQLiteDatabase db = dbh.getWritableDatabase();
+                    ContentValues myvalue = new ContentValues();
+//                    myvalue.put("matruyen",ma);
+                    myvalue.put("tentruyen",ten);
+                    myvalue.put("noidung",noidung);
+                    myvalue.put("imgdaidien",img);
+                    myvalue.put("luotlike",like);
+                    myvalue.put("luotxem",view);
+                    myvalue.put("matacgia",matg);
+                    myvalue.put("manxb",manxb);
+                    db.update("stories",myvalue, "matruyen = ?", new String[]{ma});
+
+                    ContentValues storyTypeValue = new ContentValues();
+                    if(getSelectedTheLoaiList.size() != 0){
+                        db.delete("typestory", "matruyen = ?",new String[]{ma});
+                        for (ListItem item: getSelectedTheLoaiList) {
+                            storyTypeValue.put("matl",item.getType().getMatl());
+                            storyTypeValue.put("matruyen", ma);
+                            db.insert("typestory",null,storyTypeValue);
+                        }
+                    }
+                    setResult(34);
+                    finish();
                 }
             }
         });
-
 
         adapterTheLoai.setOnItemSelectedListener(new CustomTheLoaiMultiSpinner.OnItemSelectedListener() {
             @Override
@@ -229,6 +330,39 @@ public class StoryDetailsActivity extends AppCompatActivity {
 
         btnluu = findViewById(R.id.btnluustoru);
         btnpickimg = findViewById(R.id.btnpickimgstory);
+
+        rotateOpen = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_open_anim);
+        rotateClose = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_close_anim);
+        fromBottom = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.from_bottom_anim);
+        toBottom = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.to_bottom_anim);
+
+
+        fabAdd = findViewById(R.id.fab_story_expand);
+        fabEdit = findViewById(R.id.fab_story_edit);
+        fabGallery = findViewById(R.id.fab_story_gallery);
+
+        fabAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clicked = !clicked;
+                if(clicked){
+                    fabEdit.setVisibility(View.VISIBLE);
+                    fabGallery.setVisibility(View.VISIBLE);
+
+                    fabEdit.startAnimation(fromBottom);
+                    fabGallery.startAnimation(fromBottom);
+                    fabAdd.startAnimation(rotateOpen);
+                }else{
+                    fabEdit.setVisibility(View.INVISIBLE);
+                    fabGallery.setVisibility(View.INVISIBLE);
+
+                    fabEdit.startAnimation(toBottom);
+                    fabGallery.startAnimation(toBottom);
+                    fabAdd.startAnimation(rotateClose);
+                }
+
+            }
+        });
     }
 
     public void pickImage() {

@@ -58,30 +58,31 @@ public class StoryActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         //Set click event for sending data to Story Details activity
-//        storylv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Story mytruyen = listTruyen.get(position);
-//                Intent myIntent = new Intent(getApplicationContext(), StoryDetailsActivity.class);
-//                myIntent.putExtra("matruyen", mytruyen.getMatruyen());
-//                myIntent.putExtra("tentruyen", mytruyen.getTentruyen());
-////                myIntent.putExtra("tacgia", mytruyen.getTentg());
-//                myIntent.putExtra("noidung", mytruyen.getNoidung());
-//                myIntent.putExtra("theloai", mytruyen.getTheloai());
-////                myIntent.putExtra("sochuong", mytruyen.getSochuong());
-//                myIntent.putExtra("anhbia", mytruyen.getAnhbia());
-////                myIntent.putExtra("nxb", mytruyen.getTennxb());
-//                myIntent.putExtra("luotlike",mytruyen.getLuotlike());
-//                myIntent.putExtra("luotxem",mytruyen.getLuotxem());
-//
-//                startActivity(myIntent);
-//            }
-//        });
+        storylv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Story mytruyen = listTruyen.get(position);
+                Intent myIntent = new Intent(getApplicationContext(), StoryDetailsActivity.class);
+                myIntent.putExtra("EventCode",0);
+                myIntent.putExtra("matruyen", mytruyen.getMatruyen());
+                myIntent.putExtra("tentruyen", mytruyen.getTentruyen());
+//                myIntent.putExtra("tacgia", mytruyen.getTentg());
+                myIntent.putExtra("noidung", mytruyen.getNoidung());
+                myIntent.putExtra("theloai", mytruyen.getTheloai());
+//                myIntent.putExtra("sochuong", mytruyen.getSochuong());
+                myIntent.putExtra("anhbia", mytruyen.getAnhbia());
+//                myIntent.putExtra("nxb", mytruyen.getTennxb());
+                myIntent.putExtra("luotlike",mytruyen.getLuotlike());
+                myIntent.putExtra("luotxem",mytruyen.getLuotxem());
+
+                startActivityForResult(myIntent, 99);
+            }
+        });
     }
 
     public void showList(){
         SQLiteDatabase db = dbh.getReadableDatabase();
-        Cursor cs = db.rawQuery("select stories.matruyen, stories.tentruyen, stories.noidung, stories.imgdaidien, stories.luotlike, stories.luotxem, authors.tentacgia, publisher.tennxb from stories inner join authors on stories.matacgia = authors.matacgia inner join publisher on stories.manxb = publisher.manxb", null);
+        Cursor cs = db.rawQuery("select stories.matruyen, stories.tentruyen, stories.noidung, stories.imgdaidien, authors.tentacgia, publisher.tennxb, stories.luotlike, stories.luotxem from stories inner join authors on stories.matacgia = authors.matacgia inner join publisher on stories.manxb = publisher.manxb", null);
         String theloai = "";
         Story newstory;
         listTruyen.clear();
@@ -89,13 +90,13 @@ public class StoryActivity extends AppCompatActivity {
             while(cs.moveToNext()){
                 newstory = new Story(cs.getString(0),cs.getString(1),cs.getString(2), cs.getString(3), "", cs.getString(4), cs.getString(5) ,cs.getInt(6), cs.getInt(7));
                 Cursor cs2 = db.rawQuery("select * from typestory where matruyen = '"+newstory.getMatruyen()+"'",null);
+                theloai = "";
                 while(cs2.moveToNext()){
                     Type_Story getTypeStory = new Type_Story(cs2.getString(0), cs2.getString(1));
                     Cursor cs3 = db.rawQuery("select types.tentl from types where types.matl = '"+getTypeStory.getMatl()+"'",null);
                     cs3.moveToNext();
                     theloai += cs3.getString(0);
                 }
-                Log.d("newstory", newstory.getAnhbia());
                 newstory.setTheloai(theloai);
                 listTruyen.add(newstory);
                 myAdapter.notifyDataSetChanged();
@@ -132,6 +133,8 @@ public class StoryActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if(requestCode == 99 && resultCode == 33){
+            showList();
+        }else if(requestCode == 99 && resultCode == 34){
             showList();
         }
         super.onActivityResult(requestCode, resultCode, data);
