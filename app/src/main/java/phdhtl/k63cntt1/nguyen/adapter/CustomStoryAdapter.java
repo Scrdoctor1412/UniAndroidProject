@@ -96,9 +96,12 @@ public class CustomStoryAdapter extends ArrayAdapter<Story> {
                 myIntent.putExtra("anhbia", mytruyen.getAnhbia());
                 myIntent.putExtra("luotlike",mytruyen.getLuotlike());
                 myIntent.putExtra("luotxem",mytruyen.getLuotxem());
+                myIntent.putExtra("sochuong", mytruyen.getSochuong());
                 startActivityForResult(context, myIntent, 99,null);
             }
         });
+
+
 
         return convertView;
     }

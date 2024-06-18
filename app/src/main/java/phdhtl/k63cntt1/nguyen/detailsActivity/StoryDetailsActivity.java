@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import phdhtl.k63cntt1.nguyen.Activity.ChapterActivity;
 import phdhtl.k63cntt1.nguyen.R;
 import phdhtl.k63cntt1.nguyen.adapter.CustomTheLoaiMultiSpinner;
 import phdhtl.k63cntt1.nguyen.helper.ConvertHelper;
@@ -154,6 +155,14 @@ public class StoryDetailsActivity extends AppCompatActivity {
             }
         });
 
+        fabGallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(getApplicationContext(), ChapterActivity.class);
+                myIntent.putExtra("matruyen", edtmatruyen.getText().toString());
+                startActivity(myIntent);
+            }
+        });
         btnpickimg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -171,6 +180,7 @@ public class StoryDetailsActivity extends AppCompatActivity {
                     String img = ConvertHelper.BitMapToString(((BitmapDrawable)imgdaidien.getDrawable()).getBitmap());
                     int like = Integer.parseInt(edtluotlike.getText().toString());
                     int view = Integer.parseInt(edtluotxem.getText().toString());
+                    int sochuong = Integer.parseInt(edtsochuong.getText().toString());
 //                    String matg = listTacGia
                     int positionTacGia = sptacgia.getSelectedItemPosition();
                     int positionNxb = spnxb.getSelectedItemPosition();
@@ -185,6 +195,7 @@ public class StoryDetailsActivity extends AppCompatActivity {
                     myvalue.put("imgdaidien",img);
                     myvalue.put("luotlike",like);
                     myvalue.put("luotxem",view);
+                    myvalue.put("sochuong", sochuong);
                     myvalue.put("matacgia",matg);
                     myvalue.put("manxb",manxb);
                     db.insert("stories",null,myvalue);
@@ -204,6 +215,7 @@ public class StoryDetailsActivity extends AppCompatActivity {
                     String img = ConvertHelper.BitMapToString(((BitmapDrawable)imgdaidien.getDrawable()).getBitmap());
                     int like = Integer.parseInt(edtluotlike.getText().toString());
                     int view = Integer.parseInt(edtluotxem.getText().toString());
+                    int sochuong = Integer.parseInt(edtsochuong.getText().toString());
 //                    String matg = listTacGia
                     int positionTacGia = sptacgia.getSelectedItemPosition();
                     int positionNxb = spnxb.getSelectedItemPosition();
@@ -218,6 +230,7 @@ public class StoryDetailsActivity extends AppCompatActivity {
                     myvalue.put("imgdaidien",img);
                     myvalue.put("luotlike",like);
                     myvalue.put("luotxem",view);
+                    myvalue.put("sochuong", sochuong);
                     myvalue.put("matacgia",matg);
                     myvalue.put("manxb",manxb);
                     db.update("stories",myvalue, "matruyen = ?", new String[]{ma});

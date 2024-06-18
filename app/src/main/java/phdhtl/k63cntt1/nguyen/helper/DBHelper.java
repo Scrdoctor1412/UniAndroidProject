@@ -31,7 +31,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sqlCreateUsers = "create table if not exists users(mauser varchar(10) primary key, username text, email text ,password text, imgdaidien text,level integer)";
-        String sqlCreateStory = "create table if not exists stories(matruyen varchar(10) primary key, tentruyen text, noidung text, imgdaidien text, luotlike integer, luotxem integer, matacgia varchar(10), manxb varchar(10)," +
+        String sqlCreateStory = "create table if not exists stories(matruyen varchar(10) primary key, tentruyen text, noidung text, imgdaidien text, luotlike integer, luotxem integer, sochuong integer ,matacgia varchar(10), manxb varchar(10)," +
                 "foreign key (matacgia) references authors(matacgia)," +
                 "foreign key (manxb) references publisher(manxb)" +
                 ")";
@@ -45,7 +45,7 @@ public class DBHelper extends SQLiteOpenHelper {
         String sqlCreateChapter = "create table if not exists chapters(machuong varchar(10) primary key, chuongso integer, chuongten text, matruyen varchar(10)," +
                 "foreign key (matruyen) references stories(matruyen)" +
                 ")";
-        String sqlCreateChapterImage = "create table if not exists chapterimage(mahinhanhchuong varchar(10), hinhanh text, machuong varchar(10)" +
+        String sqlCreateChapterImage = "create table if not exists chapterimage(mahinhanhchuong varchar(10), hinhanh text, machuong varchar(10)," +
                 "foreign key (machuong) references chapter(machuong)" +
                 ")";
 
@@ -55,6 +55,8 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(sqlCreateType);
         db.execSQL(sqlCreateTypeStory);
         db.execSQL(sqlCreateStory);
+        db.execSQL(sqlCreateChapter);
+        db.execSQL(sqlCreateChapterImage);
 //        ImageView testImg;
 //        testImg.setImageResource(R.drawable.author);
 //        Bitmap bm = ((BitmapDrawable)testImg.getDrawable()).getBitmap();

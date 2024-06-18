@@ -10,9 +10,10 @@ public class Story {
     private String tacgia;
     private int luotxem;
     private int luotlike;
+    private int sochuong;
 
 
-    public Story(String matruyen, String tentruyen, String noidung, String anhbia, String theloai, String tacgia, String nxb, int luotxem, int luotlike) {
+    public Story(String matruyen, String tentruyen, String noidung, String anhbia, String theloai, String tacgia, String nxb, int luotxem, int luotlike, int sochuong) {
         this.matruyen = matruyen;
         this.tentruyen = tentruyen;
         this.anhbia = anhbia;
@@ -22,6 +23,15 @@ public class Story {
         this.luotlike = luotlike;
         this.nxb = nxb;
         this.tacgia = tacgia;
+        this.sochuong = sochuong;
+    }
+
+    public int getSochuong() {
+        return sochuong;
+    }
+
+    public void setSochuong(int sochuong) {
+        this.sochuong = sochuong;
     }
 
     public int getLuotxem() {

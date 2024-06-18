@@ -82,13 +82,13 @@ public class StoryActivity extends AppCompatActivity {
 
     public void showList(){
         SQLiteDatabase db = dbh.getReadableDatabase();
-        Cursor cs = db.rawQuery("select stories.matruyen, stories.tentruyen, stories.noidung, stories.imgdaidien, authors.tentacgia, publisher.tennxb, stories.luotlike, stories.luotxem from stories inner join authors on stories.matacgia = authors.matacgia inner join publisher on stories.manxb = publisher.manxb", null);
+        Cursor cs = db.rawQuery("select stories.matruyen, stories.tentruyen, stories.noidung, stories.imgdaidien, authors.tentacgia, publisher.tennxb, stories.luotlike, stories.luotxem, stories.sochuong from stories inner join authors on stories.matacgia = authors.matacgia inner join publisher on stories.manxb = publisher.manxb", null);
         String theloai = "";
         Story newstory;
         listTruyen.clear();
         try{
             while(cs.moveToNext()){
-                newstory = new Story(cs.getString(0),cs.getString(1),cs.getString(2), cs.getString(3), "", cs.getString(4), cs.getString(5) ,cs.getInt(6), cs.getInt(7));
+                newstory = new Story(cs.getString(0),cs.getString(1),cs.getString(2), cs.getString(3), "", cs.getString(4), cs.getString(5) ,cs.getInt(6), cs.getInt(7), cs.getInt(8));
                 Cursor cs2 = db.rawQuery("select * from typestory where matruyen = '"+newstory.getMatruyen()+"'",null);
                 theloai = "";
                 while(cs2.moveToNext()){
