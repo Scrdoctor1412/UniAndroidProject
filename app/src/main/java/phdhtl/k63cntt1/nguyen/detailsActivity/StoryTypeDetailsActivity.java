@@ -73,7 +73,7 @@ public class StoryTypeDetailsActivity extends AppCompatActivity {
             String tentl = intent.getStringExtra("tentl");
             String ndtl = intent.getStringExtra("ndtl");
             edtndtldetails.setText(ndtl);
-            edtmatldetails.setText(ndtl);
+            edtmatldetails.setText(matl);
             edttentldetails.setText(tentl);
         }
 

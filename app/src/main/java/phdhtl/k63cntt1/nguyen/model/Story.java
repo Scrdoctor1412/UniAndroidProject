@@ -8,22 +8,30 @@ public class Story {
     private String theloai;
     private String nxb;
     private String tacgia;
-    private int sochuong;
     private int luotxem;
     private int luotlike;
+    private int sochuong;
 
 
-    public Story(String matruyen, String tentruyen, String anhbia, String noidung, String theloai, String nxb, String tacgia, int sochuong, int luotxem, int luotlike) {
+    public Story(String matruyen, String tentruyen, String noidung, String anhbia, String theloai, String tacgia, String nxb, int luotxem, int luotlike, int sochuong) {
         this.matruyen = matruyen;
         this.tentruyen = tentruyen;
         this.anhbia = anhbia;
         this.noidung = noidung;
         this.theloai = theloai;
-        this.sochuong = sochuong;
         this.luotxem = luotxem;
         this.luotlike = luotlike;
         this.nxb = nxb;
         this.tacgia = tacgia;
+        this.sochuong = sochuong;
+    }
+
+    public int getSochuong() {
+        return sochuong;
+    }
+
+    public void setSochuong(int sochuong) {
+        this.sochuong = sochuong;
     }
 
     public int getLuotxem() {
@@ -80,14 +88,6 @@ public class Story {
 
     public void setTheloai(String theloai) {
         this.theloai = theloai;
-    }
-
-    public int getSochuong() {
-        return sochuong;
-    }
-
-    public void setSochuong(int sochuong) {
-        this.sochuong = sochuong;
     }
 
     public String getNxb() {
