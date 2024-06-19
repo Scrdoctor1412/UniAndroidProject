@@ -23,8 +23,10 @@
         android:layout_height="47dp"
         android:layout_marginStart="60dp"
         android:layout_marginTop="18dp"
+        android:layout_marginEnd="15dp"
         android:ems="10"
         android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/edtusername" />
 
@@ -44,8 +46,10 @@
         android:layout_height="44dp"
         android:layout_marginStart="56dp"
         android:layout_marginTop="248dp"
+        android:layout_marginEnd="18dp"
         android:ems="10"
         android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -75,18 +79,23 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="104dp"
         android:layout_marginTop="40dp"
+        android:layout_marginEnd="36dp"
         android:text="Forgot password?"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cbrememberme"
         app:layout_constraintTop_toBottomOf="@+id/edtpassword" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="143dp"
-        android:layout_marginTop="81dp"
+        android:layout_width="203dp"
+        android:layout_height="113dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="160dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:srcCompat="@drawable/img"
+        tools:srcCompat="@drawable/img" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

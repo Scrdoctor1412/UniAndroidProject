@@ -15,7 +15,8 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="1dp" />
+        tools:layout_editor_absoluteX="1dp"
+        app:title="Chi tiết chương truyện"/>
 
     <LinearLayout
         android:id="@+id/linearLayout6"
