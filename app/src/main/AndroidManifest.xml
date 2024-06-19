@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+<!--    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>-->
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,7 +15,20 @@
         android:theme="@style/Theme.FinalProject"
         tools:targetApi="31">
         <activity
+<<<<<<< HEAD
+            android:name=".StatisticsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AuthorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NxbActivity"
+=======
             android:name=".detailsActivity.ChapterImageDetailsActivity"
+>>>>>>> cd1b35ff8b893212976e03ca301af539c0483df2
             android:exported="false"
             android:parentActivityName=".Activity.ChapterImageActivity"/>
         <activity
