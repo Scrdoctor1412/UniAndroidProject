@@ -2,6 +2,7 @@ package phdhtl.k63cntt1.nguyen.Activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.CursorWindow;
 import android.os.Bundle;
 import android.util.Log;
@@ -71,7 +72,10 @@ public class MainActivity extends AppCompatActivity {
                 }else if(item.getItemId() == R.id.item_user){
 
                 }else if(item.getItemId() == R.id.item_logout){
-
+                    SharedPreferences settings = getSharedPreferences("Login", MODE_PRIVATE);
+                    settings.edit().clear().commit();
+                    Intent in = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(in);
                 } else if (item.getItemId() == R.id.item_author) {
                     Intent userActivityLauncher = new Intent(MainActivity.this, AuthorActivity.class);
                     startActivity(userActivityLauncher);

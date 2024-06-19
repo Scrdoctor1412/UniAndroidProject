@@ -13,13 +13,21 @@
         android:theme="@style/Theme.FinalProject"
         tools:targetApi="31">
         <activity
+            android:name=".detailsActivity.ChapterImageDetailsActivity"
+            android:exported="false"
+            android:parentActivityName=".Activity.ChapterImageActivity"/>
+        <activity
+            android:name=".Activity.ChapterImageActivity"
+            android:exported="false"
+            android:parentActivityName=".Activity.ChapterActivity" />
+        <activity
             android:name=".detailsActivity.ChapterDetailsActivity"
             android:exported="false"
-            android:parentActivityName=".Activity.ChapterActivity"/>
+            android:parentActivityName=".Activity.ChapterActivity" />
         <activity
             android:name=".Activity.ChapterActivity"
             android:exported="false"
-            android:parentActivityName=".detailsActivity.StoryDetailsActivity"/>
+            android:parentActivityName=".detailsActivity.StoryDetailsActivity" />
         <activity
             android:name=".detailsActivity.StoryTypeDetailsActivity"
             android:exported="false"

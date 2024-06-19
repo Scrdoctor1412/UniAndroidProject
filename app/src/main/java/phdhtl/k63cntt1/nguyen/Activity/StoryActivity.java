@@ -1,5 +1,7 @@
 package phdhtl.k63cntt1.nguyen.Activity;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -17,6 +19,7 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 
 import java.util.ArrayList;
@@ -39,6 +42,7 @@ public class StoryActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     DBHelper dbh;
+    SearchView searchView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,15 +110,74 @@ public class StoryActivity extends AppCompatActivity {
             Log.d("publisher db error", e.getMessage());
         }
     }
+
+    public void showList2(String searchText){
+        SQLiteDatabase db = dbh.getReadableDatabase();
+
+
+        String theloai = "";
+        Story newstory;
+        try{
+            Cursor cs = db.rawQuery("select stories.matruyen, stories.tentruyen, stories.noidung, stories.imgdaidien, authors.tentacgia, publisher.tennxb, stories.luotlike, stories.luotxem, stories.sochuong from stories inner join authors on stories.matacgia = authors.matacgia inner join publisher on stories.manxb = publisher.manxb where stories.tentruyen = '"+searchText+"' or authors.tentacgia = '"+searchText+"'", null);
+
+                listTruyen.clear();
+                while(cs.moveToNext()){
+                    newstory = new Story(cs.getString(0),cs.getString(1),cs.getString(2), cs.getString(3), "", cs.getString(4), cs.getString(5) ,cs.getInt(6), cs.getInt(7), cs.getInt(8));
+                    Cursor cs2 = db.rawQuery("select * from typestory where matruyen = '"+newstory.getMatruyen()+"'",null);
+                    theloai = "";
+                    while(cs2.moveToNext()){
+                        Type_Story getTypeStory = new Type_Story(cs2.getString(0), cs2.getString(1));
+                        Cursor cs3 = db.rawQuery("select types.tentl from types where types.matl = '"+getTypeStory.getMatl()+"'",null);
+                        cs3.moveToNext();
+                        theloai += cs3.getString(0);
+                    }
+                    newstory.setTheloai(theloai);
+                    listTruyen.add(newstory);
+                    myAdapter.notifyDataSetChanged();
+                }
+
+        }catch (Exception e){
+            listTruyen.clear();
+            myAdapter.notifyDataSetChanged();
+            Log.d("publisher db error", e.getMessage());
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.general_insert_menu, menu);
+        getMenuInflater().inflate(R.menu.story_insert_menu, menu);
+
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        searchView = (SearchView) menu.findItem(R.id.story_item_search).getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setMaxWidth(Integer.MAX_VALUE);
+
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                showList();
+                return false;
+            }
+        });
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                showList2(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                showList2(newText);
+                return false;
+            }
+        });
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == R.id.item_insert){
+        if(item.getItemId() == R.id.story_item_insert){
             Intent myIntent = new Intent(getApplicationContext(),StoryDetailsActivity.class);
             myIntent.putExtra("EventCode", 1);
             startActivityForResult(myIntent,99);
