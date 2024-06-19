@@ -20,6 +20,10 @@
         <item android:id="@+id/item_user_manager"
             android:icon="@drawable/baseline_people_24"
             android:title="User"/>
+
+        <item android:id="@+id/item_statistics"
+            android:icon="@drawable/baseline_bar_chart_24"
+            android:title="Statistics"/>
     </group>
 
     <item android:title="Profile">
