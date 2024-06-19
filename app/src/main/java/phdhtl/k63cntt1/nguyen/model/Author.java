@@ -4,17 +4,20 @@ public class Author {
     private String id;
     private String name;
     private String introducing;
+    private String imgdaidien;
 
     public Author() {
         this.id = "Dummyid";
         this.name = "DummyName";
         this.introducing = "DummyIntroducing";
+        this.imgdaidien = "";
     }
 
-    public Author(String id, String name, String introducing) {
+    public Author(String id, String name, String introducing, String imgdaidien) {
         this.id = id;
         this.name = name;
         this.introducing = introducing;
+        this.imgdaidien = imgdaidien;
     }
 
     public String getId() {
@@ -39,5 +42,13 @@ public class Author {
 
     public void setIntroducing(String introducing) {
         this.introducing = introducing;
+    }
+
+    public String getImgdaidien() {
+        return imgdaidien;
+    }
+
+    public void setImgdaidien(String imgdaidien) {
+        this.imgdaidien = imgdaidien;
     }
 }

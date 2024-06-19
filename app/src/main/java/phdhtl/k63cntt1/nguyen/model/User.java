@@ -5,28 +5,25 @@ public class User {
     private String userName;
     private String email;
     private String passWord;
-    private String athGoogleId;
-    private int authType;
     private int level;
+    private String imgdaidien;
 
     public User() {
         this.id = "dummyID";
         this.userName = "dummyName";
         this.email = "dummyEmail";
         this.passWord = "dummyPW";
-        this.athGoogleId = "dummyGGID";
-        this.authType = 0;
         this.level = 0;
+        this.imgdaidien = "";
     }
 
-    public User(String id, String userName, String email, String passWord, String athGoogleId, int authType, int level) {
+    public User(String id, String userName, String email, String passWord,  String imgdaidien, int level) {
         this.id = id;
         this.userName = userName;
         this.email = email;
         this.passWord = passWord;
-        this.athGoogleId = athGoogleId;
-        this.authType = authType;
         this.level = level;
+        this.imgdaidien = imgdaidien;
     }
 
     public String getId() {
@@ -61,27 +58,19 @@ public class User {
         this.passWord = passWord;
     }
 
-    public String getAthGoogleId() {
-        return athGoogleId;
-    }
-
-    public void setAthGoogleId(String athGoogleId) {
-        this.athGoogleId = athGoogleId;
-    }
-
-    public int getAuthType() {
-        return authType;
-    }
-
-    public void setAuthType(int authType) {
-        this.authType = authType;
-    }
-
     public int getLevel() {
         return level;
     }
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    public String getImgdaidien() {
+        return imgdaidien;
+    }
+
+    public void setImgdaidien(String imgdaidien) {
+        this.imgdaidien = imgdaidien;
     }
 }

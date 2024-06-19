@@ -5,29 +5,30 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.NxbActivity">
+    tools:context=".Activity.ChapterImageActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarnxb"
+        android:id="@+id/toolbarchapterimage"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Chapter Image"/>
 
     <ListView
-        android:id="@+id/nxblv"
+        android:id="@+id/lvchapterimg"
         android:layout_width="409dp"
         android:layout_height="665dp"
-        android:layout_marginStart="2dp"
+        android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarnxb"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/toolbarchapterimage" />
 </androidx.constraintlayout.widget.ConstraintLayout>

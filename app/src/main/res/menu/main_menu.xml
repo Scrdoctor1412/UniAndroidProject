@@ -21,17 +21,21 @@
             android:icon="@drawable/baseline_people_24"
             android:title="User"/>
 
+<<<<<<< HEAD
         <item android:id="@+id/item_statistics"
             android:icon="@drawable/baseline_bar_chart_24"
             android:title="Statistics"/>
+=======
+        <item android:id="@+id/item_story_type"
+            android:icon="@drawable/folder"
+            android:title="Story Type"/>
+>>>>>>> cd1b35ff8b893212976e03ca301af539c0483df2
     </group>
 
     <item android:title="Profile">
         <menu>
             <group android:checkableBehavior="single">
-                <item android:id="@+id/item_author"
-                    android:icon="@drawable/baseline_account_circle_24"
-                    android:title="Author"/>
+
                 <item android:id="@+id/item_user"
                     android:icon="@drawable/baseline_account_circle_24"
                     android:title="User"/>
