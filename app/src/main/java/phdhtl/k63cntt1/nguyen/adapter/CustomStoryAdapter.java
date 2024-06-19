@@ -5,11 +5,14 @@ import static androidx.core.app.ActivityCompat.startActivityForResult;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +21,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import phdhtl.k63cntt1.nguyen.R;
 import phdhtl.k63cntt1.nguyen.detailsActivity.StoryDetailsActivity;
@@ -25,15 +29,17 @@ import phdhtl.k63cntt1.nguyen.helper.ConvertHelper;
 import phdhtl.k63cntt1.nguyen.helper.DBHelper;
 import phdhtl.k63cntt1.nguyen.model.Story;
 
-public class CustomStoryAdapter extends ArrayAdapter<Story> {
+public class CustomStoryAdapter extends ArrayAdapter<Story>{
     Activity context;
     int idLayout;
     ArrayList<Story> mylist;
+    ArrayList<Story> mylistOld;
     public CustomStoryAdapter(Activity context, int idLayout, ArrayList<Story> mylist) {
         super(context, idLayout, mylist);
         this.context = context;
         this.idLayout = idLayout;
         this.mylist = mylist;
+        this.mylistOld = mylist;
     }
 
     DBHelper dbh;
@@ -45,7 +51,6 @@ public class CustomStoryAdapter extends ArrayAdapter<Story> {
         Story mytruyen = mylist.get(position);
 
         ImageView anhbia = convertView.findViewById(R.id.imganhtruyen);
-//        anhbia.setImageResource(mytruyen.getAnhbia());
         anhbia.setImageBitmap(ConvertHelper.StringToBitMap(mytruyen.getAnhbia()));
 
         TextView txtmatruyen, txttentruyen, txttheloai, txttacgia;
@@ -105,4 +110,6 @@ public class CustomStoryAdapter extends ArrayAdapter<Story> {
 
         return convertView;
     }
+
+
 }

@@ -45,7 +45,7 @@ public class DBHelper extends SQLiteOpenHelper {
         String sqlCreateChapter = "create table if not exists chapters(machuong varchar(10) primary key, chuongso integer, chuongten text, matruyen varchar(10)," +
                 "foreign key (matruyen) references stories(matruyen)" +
                 ")";
-        String sqlCreateChapterImage = "create table if not exists chapterimage(mahinhanhchuong varchar(10), hinhanh text, machuong varchar(10)," +
+        String sqlCreateChapterImage = "create table if not exists chapterimage(mahinhanhchuong integer primary key, hinhanh text, machuong varchar(10)," +
                 "foreign key (machuong) references chapter(machuong)" +
                 ")";
 
