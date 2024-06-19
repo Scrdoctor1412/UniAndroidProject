@@ -30,7 +30,6 @@ import phdhtl.k63cntt1.nguyen.detailsActivity.StoryDetailsActivity;
 import phdhtl.k63cntt1.nguyen.adapter.CustomStoryAdapter;
 import phdhtl.k63cntt1.nguyen.helper.ConvertHelper;
 import phdhtl.k63cntt1.nguyen.helper.DBHelper;
-import phdhtl.k63cntt1.nguyen.model.Publisher;
 import phdhtl.k63cntt1.nguyen.model.Story;
 import phdhtl.k63cntt1.nguyen.model.Type_Story;
 
@@ -188,7 +187,7 @@ public class StoryActivity extends AppCompatActivity {
     public void initView(){
         storylv = findViewById(R.id.storylv);
         listTruyen = new ArrayList<>();
-        myAdapter = new CustomStoryAdapter(StoryActivity.this, R.layout.custom_storylv, listTruyen);
+        myAdapter = new CustomStoryAdapter(StoryActivity.this, R.layout.custom_story_row, listTruyen);
         storylv.setAdapter(myAdapter);
         toolbar = findViewById(R.id.toolbar2);
     }
