@@ -2,11 +2,17 @@ package phdhtl.k63cntt1.nguyen.Activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.content.SharedPreferences;
 import android.database.CursorWindow;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
+import android.view.MenuItem;
+import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,6 +29,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -35,6 +42,18 @@ import com.google.android.material.navigation.NavigationView;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
+import com.github.mikephil.charting.formatter.DefaultAxisValueFormatter;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.google.android.material.navigation.NavigationView;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +65,21 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     ActionBarDrawerToggle drawerToggle;
+    private final String BY_AUTHOR = "Tác giả";
+    private final String BY_CATEGORY = "Thể loại";
+    private final String BY_COMIC = "Truyện";
+    private final String[] chartSpinnerValueList = {"Tác giả", "Thể loại", "Truyện"};
+    BarChart barChartComic;
+    Spinner sprChar;
+    List<BarEntry> barEntryList;
+    Button btnExportCsv;
+
+    private String filename = "thongke.csv";
+    private String filepath = "CSV";
+    File myExternalFile;
+    String[] labelsArr;
+    int[] viewsArr;
+    int[] likesArr;
 
     private final String BY_AUTHOR = "Tác giả";
     private final String BY_CATEGORY = "Thể loại";
@@ -71,6 +105,79 @@ public class MainActivity extends AppCompatActivity {
 
         initView();
 
+        sprChar.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (chartSpinnerValueList[position]) {
+                    case BY_AUTHOR:
+                        //query data and show
+                        labelsArr = new String[] {"Hiếu Hiếu", "Nancy", "Taylor Swift", "K. Nguyên", "Eminem"};
+                        viewsArr = new int[] {30, 300, 20, 500, 30};
+                        likesArr = new int[] {50, 330, 200, 50, 10};
+//                        showMostViewChart(labels, views);
+                        showMostViewAndLikeComicChart(labelsArr, viewsArr, likesArr);
+                        break;
+                    case BY_CATEGORY:
+                        //query data and show
+                        labelsArr = new String[] {"Hành động", "Lãng mạn", "Trinh thám", "Chuyển sinh", "Kinh dị"};
+                        viewsArr = new int[] {300, 30, 200, 50, 80};
+                        likesArr = new int[] {50, 30, 200, 50, 109};
+//                        showMostViewChart(labels2, views2);
+                        showMostViewAndLikeComicChart(labelsArr, viewsArr, likesArr);
+                        break;
+                    case BY_COMIC:
+                        //query data and show
+                        labelsArr = new String[] {"AOT", "Gundam 003", "Doraemon 14", "Iron man", "Wing gundam"};
+                        viewsArr = new int[] {30, 300, 20, 150, 80};
+                        likesArr = new int[] {50, 30, 200, 50, 109};
+//                        showMostViewChart(labels2, views2);
+                        showMostViewAndLikeComicChart(labelsArr, viewsArr, likesArr);
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        btnExportCsv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //thông báo ko ghi đc
+                if (!isExternalStorageAvailable() || isExternalStorageReadOnly())
+                    Log.d("write file", "onClick: not available");
+                else {
+                    myExternalFile = new File(getExternalFilesDir(filepath), filename);
+                    try {
+                        FileOutputStream fos = new FileOutputStream(myExternalFile);
+//                        fos.write("hello".getBytes());
+                        fos.write("Name, Views, Likes \n".getBytes());
+                        for (int i = 0; i < labelsArr.length; i ++) {
+                            fos.write((labelsArr[i] + ",").getBytes());
+                            fos.write((viewsArr[i] + ",").getBytes());
+                            fos.write((likesArr[i] + "\n").getBytes());
+                        }
+                        fos.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        //thông báo lỗi
+                    }
+                    Log.d("path", myExternalFile.getPath());
+                }
+            }
+        });
+    }
+
+    private static boolean isExternalStorageReadOnly() {
+        String extStorageState = Environment.getExternalStorageState();
+        return Environment.MEDIA_MOUNTED_READ_ONLY.equals(extStorageState);
+    }
+
+    private static boolean isExternalStorageAvailable() {
+        String extStorageState = Environment.getExternalStorageState();
+        return Environment.MEDIA_MOUNTED.equals(extStorageState);
         //for fixing error Row too big to fit into CursorWindow
         try {
             @SuppressLint("PrivateApi")
@@ -94,6 +201,8 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         toolbar.setNavigationIcon(R.drawable.iconmenu);
+
+        btnExportCsv = findViewById(R.id.btn_exportCsvFile);
 
         navigationView.bringToFront();
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -121,6 +230,8 @@ public class MainActivity extends AppCompatActivity {
                 }else if(item.getItemId() == R.id.item_publisher){
                     Intent myIntent = new Intent(getApplicationContext(), NxbActivity.class);
                     startActivity(myIntent);
+                } else if (item.getItemId() == R.id.item_statistics) {
+                    Intent myIntent = new Intent(getApplicationContext(), StatisticsActivity.class);
                 }else if(item.getItemId() == R.id.item_story_type){
                     Intent myIntent = new Intent(getApplicationContext(), StoryTypeActivity.class);
                     startActivity(myIntent);
@@ -204,7 +315,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        //Biểu đồ
+        barChartComic = findViewById(R.id.bc_comicStatistics);
+        sprChar = findViewById(R.id.spr_charSpinner);
 
+        ArrayAdapter<CharSequence> typeArrayAdapter = new ArrayAdapter<>(
+                this,
+                androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
+                chartSpinnerValueList);
+        sprChar.setAdapter(typeArrayAdapter);
     }
 
     @Override

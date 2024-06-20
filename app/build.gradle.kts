@@ -39,3 +39,6 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
     implementation("com.github.PhilJay:MPAndroidChart:v3.0.2")
 }
+    // https://mvnrepository.com/artifact/com.github.PhilJay/MPAndroidChart
+    implementation("com.github.PhilJay:MPAndroidChart:v3.0.2")
+}
