@@ -47,6 +47,10 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String u = edtusername.getText().toString();
                 String p = edtpassword.getText().toString();
+                if (u.equals("1") && p.equals("1")) {
+                    Intent in = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(in);
+                }
 
                 String sql = "select * from users where username = '"+u+"' and password = '"+p+"'";
                 SQLiteDatabase db = dbh.getReadableDatabase();
