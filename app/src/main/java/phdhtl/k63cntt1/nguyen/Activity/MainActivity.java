@@ -2,25 +2,19 @@ package phdhtl.k63cntt1.nguyen.Activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-<<<<<<< HEAD:app/src/main/java/phdhtl/k63cntt1/nguyen/MainActivity.java
 import android.graphics.Color;
-=======
 import android.content.SharedPreferences;
 import android.database.CursorWindow;
->>>>>>> cd1b35ff8b893212976e03ca301af539c0483df2:app/src/main/java/phdhtl/k63cntt1/nguyen/Activity/MainActivity.java
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.MenuItem;
-<<<<<<< HEAD:app/src/main/java/phdhtl/k63cntt1/nguyen/MainActivity.java
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-=======
->>>>>>> cd1b35ff8b893212976e03ca301af539c0483df2:app/src/main/java/phdhtl/k63cntt1/nguyen/Activity/MainActivity.java
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -41,7 +35,6 @@ import com.github.mikephil.charting.formatter.DefaultAxisValueFormatter;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.google.android.material.navigation.NavigationView;
 
-<<<<<<< HEAD:app/src/main/java/phdhtl/k63cntt1/nguyen/MainActivity.java
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -49,11 +42,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-=======
 import java.lang.reflect.Field;
 
 import phdhtl.k63cntt1.nguyen.R;
->>>>>>> cd1b35ff8b893212976e03ca301af539c0483df2:app/src/main/java/phdhtl/k63cntt1/nguyen/Activity/MainActivity.java
 
 public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
@@ -83,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
 
         initView();
 
-<<<<<<< HEAD:app/src/main/java/phdhtl/k63cntt1/nguyen/MainActivity.java
         sprChar.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -169,7 +159,6 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
->>>>>>> cd1b35ff8b893212976e03ca301af539c0483df2:app/src/main/java/phdhtl/k63cntt1/nguyen/Activity/MainActivity.java
     }
 
     public void initView(){
@@ -212,13 +201,10 @@ public class MainActivity extends AppCompatActivity {
                 }else if(item.getItemId() == R.id.item_publisher){
                     Intent myIntent = new Intent(getApplicationContext(), NxbActivity.class);
                     startActivity(myIntent);
-<<<<<<< HEAD:app/src/main/java/phdhtl/k63cntt1/nguyen/MainActivity.java
                 } else if (item.getItemId() == R.id.item_statistics) {
                     Intent myIntent = new Intent(getApplicationContext(), StatisticsActivity.class);
-=======
                 }else if(item.getItemId() == R.id.item_story_type){
                     Intent myIntent = new Intent(getApplicationContext(), StoryTypeActivity.class);
->>>>>>> cd1b35ff8b893212976e03ca301af539c0483df2:app/src/main/java/phdhtl/k63cntt1/nguyen/Activity/MainActivity.java
                     startActivity(myIntent);
                 }
                 return false;
